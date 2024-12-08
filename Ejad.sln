@@ -1,0 +1,57 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{E98945DC-4D70-4F9A-AB92-3CE0DFF50457}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejad.Domain", "Ejad.Domain\Ejad.Domain.csproj", "{8F8FAA09-66C9-44D0-8775-5E92AD6D553E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejad.Api", "Ejad.Api\Ejad.Api.csproj", "{11A40BF4-A9AF-4599-AFD4-A163D0F83415}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejad.Persistence", "Ejad.Persistence\Ejad.Persistence.csproj", "{900AF25F-0B78-42D2-B519-9F69BBB9299A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejad.Core", "Ejad.Core\Ejad.Core.csproj", "{37B92DD9-BA5A-4AE0-A034-0B10CC2A80FD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{475BD514-CB5B-4CAA-BC83-8B1A58987806}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ejad.Ui", "Ejad.Ui\Ejad.Ui.csproj", "{D819C192-986E-4F91-A0F3-AAA2CCFA207E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8F8FAA09-66C9-44D0-8775-5E92AD6D553E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F8FAA09-66C9-44D0-8775-5E92AD6D553E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F8FAA09-66C9-44D0-8775-5E92AD6D553E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F8FAA09-66C9-44D0-8775-5E92AD6D553E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11A40BF4-A9AF-4599-AFD4-A163D0F83415}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11A40BF4-A9AF-4599-AFD4-A163D0F83415}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11A40BF4-A9AF-4599-AFD4-A163D0F83415}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11A40BF4-A9AF-4599-AFD4-A163D0F83415}.Release|Any CPU.Build.0 = Release|Any CPU
+		{900AF25F-0B78-42D2-B519-9F69BBB9299A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{900AF25F-0B78-42D2-B519-9F69BBB9299A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{900AF25F-0B78-42D2-B519-9F69BBB9299A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{900AF25F-0B78-42D2-B519-9F69BBB9299A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37B92DD9-BA5A-4AE0-A034-0B10CC2A80FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37B92DD9-BA5A-4AE0-A034-0B10CC2A80FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37B92DD9-BA5A-4AE0-A034-0B10CC2A80FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37B92DD9-BA5A-4AE0-A034-0B10CC2A80FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D819C192-986E-4F91-A0F3-AAA2CCFA207E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D819C192-986E-4F91-A0F3-AAA2CCFA207E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D819C192-986E-4F91-A0F3-AAA2CCFA207E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D819C192-986E-4F91-A0F3-AAA2CCFA207E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8F8FAA09-66C9-44D0-8775-5E92AD6D553E} = {E98945DC-4D70-4F9A-AB92-3CE0DFF50457}
+		{11A40BF4-A9AF-4599-AFD4-A163D0F83415} = {E98945DC-4D70-4F9A-AB92-3CE0DFF50457}
+		{900AF25F-0B78-42D2-B519-9F69BBB9299A} = {E98945DC-4D70-4F9A-AB92-3CE0DFF50457}
+		{37B92DD9-BA5A-4AE0-A034-0B10CC2A80FD} = {E98945DC-4D70-4F9A-AB92-3CE0DFF50457}
+		{D819C192-986E-4F91-A0F3-AAA2CCFA207E} = {475BD514-CB5B-4CAA-BC83-8B1A58987806}
+	EndGlobalSection
+EndGlobal
