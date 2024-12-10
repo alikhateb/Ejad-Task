@@ -2,6 +2,7 @@
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using Ejad.Core.Behaviours;
 
 namespace Ejad.Core;
 

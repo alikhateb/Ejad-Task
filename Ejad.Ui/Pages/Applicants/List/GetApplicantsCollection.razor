@@ -1,0 +1,16 @@
+﻿@page "/"
+@page "/applicants"
+
+<table class="table">
+    <tbody>
+        @foreach (var items in Applicants)
+        {
+            <tr @onclick="() => GetDetails(items.Id)">
+                <th scope="row">@(++_count)</th>
+                <td>@items.FullName</td>
+                <td>@items.Email</td>
+                <td>@items.Mobile</td>
+            </tr>
+        }
+    </tbody>
+</table>

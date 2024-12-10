@@ -1,9 +1,9 @@
 ﻿using Ejad.Domain.Ids;
 using Ejad.Domain.Models;
 
-namespace Ejad.Core.Application.Applicants.Get;
+namespace Ejad.Core.Application.Applicants.Details;
 
-public class GetApplicantQueryResult
+public class GetApplicantDetailsQueryResult
 {
     public ApplicantId Id { get; init; }
     public string FullName { get; init; }

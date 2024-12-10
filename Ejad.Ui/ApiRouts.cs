@@ -1,4 +1,4 @@
-﻿namespace Ejad.Core;
+﻿namespace Ejad.Ui;
 
 public static class ApiRouts
 {

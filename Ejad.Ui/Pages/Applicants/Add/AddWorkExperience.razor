@@ -1,0 +1,60 @@
+﻿
+<EditForm Model="@Model" FormName="work_experience">
+    <DataAnnotationsValidator />
+
+    @if (ErrorMessages.Length != 0)
+    {
+        foreach (var item in ErrorMessages)
+        {
+            <p style="color: red">@item</p>
+        }
+    }
+
+    <FluentStack Orientation="Orientation.Vertical">
+        <FluentStack Orientation="Orientation.Horizontal">
+            <div>
+                <FluentTextField TextFieldType="TextFieldType.Text"
+                                 Name="@nameof(Model.JobTitle)"
+                                 @bind-Value="Model.JobTitle"
+                                 Label="@nameof(Model.JobTitle)"
+                                 Required
+                                 Size="70" />
+                <FluentValidationMessage For="@(() => Model.JobTitle)" />
+            </div>
+
+            <div>
+                <FluentTextField TextFieldType="TextFieldType.Text"
+                                 Name="@nameof(Model.CompanyName)"
+                                 @bind-Value="Model.CompanyName"
+                                 Label="@nameof(Model.CompanyName)"
+                                 Required
+                                 Size="70" />
+                <FluentValidationMessage For="@(() => Model.CompanyName)" />
+            </div>
+        </FluentStack>
+
+        <FluentStack Orientation="Orientation.Horizontal">
+            <div>
+                <FluentDatePicker @bind-Value="@Start" Label="@nameof(Model.Start)" Name="@nameof(Model.Start)" Required />
+
+                <FluentValidationMessage For="@(() => Model.Start)" />
+            </div>
+
+            <div>
+                <FluentDatePicker @bind-Value="@End" Label="@nameof(Model.End)" Name="@nameof(Model.End)" Required />
+
+                <FluentValidationMessage For="@(() => Model.End)" />
+            </div>
+
+            <div>
+                <FluentNumberField Min="0"
+                                   Name="@nameof(Model.Salary)"
+                                   @bind-Value="Model.Salary"
+                                   Label="@nameof(Model.Salary)"
+                                   Required
+                                   Size="50" />
+                <FluentValidationMessage For="@(() => Model.Salary)" />
+            </div>
+        </FluentStack>
+    </FluentStack>
+</EditForm>

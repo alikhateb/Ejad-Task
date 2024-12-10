@@ -1,0 +1,138 @@
+﻿@page "/add-applicant"
+
+<EditForm Model="@Model" OnValidSubmit="async () => await OnSubmitAsync()" FormName="applicant">
+    <DataAnnotationsValidator />
+
+    @if (ErrorMessages.Length != 0)
+    {
+        foreach (var item in ErrorMessages)
+        {
+            <p style="color: red">@item</p>
+        }
+    }
+
+    <FluentStack Orientation="Orientation.Vertical">
+
+        <FluentStack Orientation="Orientation.Horizontal">
+            <div>
+                <FluentTextField TextFieldType="TextFieldType.Text"
+                                 Name="@nameof(Model.FullName)"
+                                 @bind-Value="Model.FullName"
+                                 Label="@nameof(Model.FullName)"
+                                 Required
+                                 Size="70" />
+                <FluentValidationMessage For="@(() => Model.FullName)" />
+            </div>
+
+            <div>
+                <FluentTextField TextFieldType="TextFieldType.Email"
+                                 Name="@nameof(Model.Email)"
+                                 @bind-Value="Model.Email"
+                                 Label="@nameof(Model.Email)"
+                                 Required
+                                 Size="70" />
+                <FluentValidationMessage For="@(() => Model.Email)" />
+            </div>
+
+            <div>
+                <FluentTextField TextFieldType="TextFieldType.Tel"
+                                 Name="@nameof(Model.Mobile)"
+                                 @bind-Value="Model.Mobile"
+                                 Label="@nameof(Model.Mobile)"
+                                 Required
+                                 Size="70" />
+                <FluentValidationMessage For="@(() => Model.Mobile)" />
+            </div>
+        </FluentStack>
+
+        <FluentStack Orientation="Orientation.Horizontal">
+            <div>
+                <InputFile OnChange="OnFileCompleted" />
+            </div>
+
+            <div>
+                <FluentSelect Name="class" Id="classification" @bind-Value="MaritalStatus" TOption="string" Required Label="Primary Classification">
+                    <FluentOption Value="">Select Marital Status ...</FluentOption>
+                    @foreach (var item in Enum.GetValues<MaritalStatus>())
+                    {
+                        <FluentOption Value="@item.ToString()">@item</FluentOption>
+                    }
+                </FluentSelect>
+                <FluentValidationMessage For="@(() => Model.MaritalStatus)" />
+            </div>
+
+            <div>
+                <FluentDatePicker @bind-Value="@DateOfBirth" Label="@nameof(Model.DateOfBirth)" Name="@nameof(Model.DateOfBirth)" />
+
+                <FluentValidationMessage For="@(() => Model.DateOfBirth)" />
+            </div>
+        </FluentStack>
+
+        <FluentStack>
+            <div>
+                <FluentTextField TextFieldType="TextFieldType.Url"
+                                 Name="@nameof(Model.LinkedInUrl)"
+                                 @bind-Value="Model.LinkedInUrl"
+                                 Label="@nameof(Model.LinkedInUrl)"
+                                 Required
+                                 Size="200" />
+                <FluentValidationMessage For="@(() => Model.LinkedInUrl)" />
+            </div>
+        </FluentStack>
+
+        <FluentStack>
+            <div>
+                <FluentTextField TextFieldType="TextFieldType.Text"
+                                 Name="@nameof(Model.Address)"
+                                 @bind-Value="Model.Address"
+                                 Label="@nameof(Model.Address)"
+                                 Required
+                                 Size="200" />
+                <FluentValidationMessage For="@(() => Model.Address)" />
+            </div>
+        </FluentStack>
+
+        <FluentStack Orientation="Orientation.Horizontal">
+            <div>
+                <FluentTextField TextFieldType="TextFieldType.Text"
+                                 Name="@nameof(Model.JobTitle)"
+                                 @bind-Value="Model.JobTitle"
+                                 Label="@nameof(Model.JobTitle)"
+                                 Required
+                                 Size="100" />
+                <FluentValidationMessage For="@(() => Model.JobTitle)" />
+            </div>
+            <div>
+                <FluentNumberField Min="0"
+                                   Name="@nameof(Model.ExpectedSalary)"
+                                   @bind-Value="Model.ExpectedSalary"
+                                   Label="@nameof(Model.ExpectedSalary)"
+                                   Required
+                                   Size="50" />
+                <FluentValidationMessage For="@(() => Model.ExpectedSalary)" />
+            </div>
+        </FluentStack>
+
+        <FluentLabel Typo="Typography.H3">Work Experience</FluentLabel>
+
+        <FluentDivider Orientation="Orientation.Horizontal" Style="color: back" />
+
+        @foreach (var componentIndex in NestedComponents)
+        {
+            <AddWorkExperience @ref="ChildRefs[componentIndex]" InstanceId="componentIndex" />
+        }
+
+        <FluentStack Orientation="Orientation.Horizontal" HorizontalAlignment="HorizontalAlignment.Start" HorizontalGap="10">
+            <FluentButton Type="ButtonType.Button" Appearance="Appearance.Outline" OnClick="@AddNestedComponent"
+                          IconStart="@(new Icons.Filled.Size20.Add())">
+                Add New
+            </FluentButton>
+
+            <FluentButton Type="ButtonType.Button" Appearance="Appearance.Outline" OnClick="@DeleteLastNestedComponent"
+                          IconStart="@(new Icons.Filled.Size20.Delete())">
+            </FluentButton>
+        </FluentStack>
+
+        <FluentButton Type="ButtonType.Submit" Appearance="Appearance.Accent">Apply Now</FluentButton>
+    </FluentStack>
+</EditForm>

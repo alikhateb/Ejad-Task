@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Ejad.Core.Application.Applicants.Create;
 
-public class CreateApplicantCommandHandler(IApplicantRepository applicantRepository, IFileService fileService)
+internal class CreateApplicantCommandHandler(IApplicantRepository applicantRepository, IFileService fileService)
     : IRequestHandler<CreateApplicantCommand, ApplicantId>
 {
     public async Task<ApplicantId> Handle(CreateApplicantCommand request, CancellationToken cancellationToken)

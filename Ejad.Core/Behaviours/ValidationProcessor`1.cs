@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using MediatR.Pipeline;
 
-namespace Ejad.Core;
+namespace Ejad.Core.Behaviours;
 
 public class ValidationProcessor<TRequest>(IEnumerable<IValidator<TRequest>> validators)
     : IRequestPreProcessor<TRequest>

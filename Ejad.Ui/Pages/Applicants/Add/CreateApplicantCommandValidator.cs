@@ -1,7 +1,7 @@
-﻿using FluentValidation;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
+using FluentValidation;
 
-namespace Ejad.Core.Application.Applicants.Create;
+namespace Ejad.Ui.Pages.Applicants.Add;
 
 public partial class CreateApplicantCommandValidator : AbstractValidator<CreateApplicantCommand>
 {
@@ -42,36 +42,6 @@ public partial class CreateApplicantCommandValidator : AbstractValidator<CreateA
         RuleFor(x => x.DateOfBirth)
             .NotEmpty()
             .WithMessage("DateOfBirth is invalid");
-
-        When(x => x.Experiences.Count != 0, () =>
-        {
-            RuleForEach(x => x.Experiences)
-                .ChildRules(experience =>
-                {
-                    experience.RuleFor(x => x.JobTitle)
-                        .NotEmpty()
-                        .WithMessage("JobTitle is required");
-
-                    experience.RuleFor(x => x.CompanyName)
-                        .NotEmpty()
-                        .WithMessage("CompanyName is required");
-
-                    experience.RuleFor(x => x.Start)
-                        .NotEmpty()
-                        .WithMessage("Start is invalid");
-
-                    experience.RuleFor(x => x.End)
-                        .NotEmpty()
-                        .WithMessage("End is invalid")
-                        .Must((x, y) => x.Start < y)
-                        .WithMessage("End must be greater than start");
-
-                    experience.RuleFor(x => x.Salary)
-                        .GreaterThan(0)
-                        .WithMessage("Salary should be greater than 0");
-                });
-
-        });
     }
 
     [GeneratedRegex("^[+]?[0-9]+$")]

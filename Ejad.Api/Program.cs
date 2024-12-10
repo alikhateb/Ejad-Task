@@ -14,6 +14,16 @@ builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddCore();
 builder.Services.AddSingleton<ExceptionMiddleware>();
 
+builder.Services.AddCors(policy =>
+{
+    policy.AddPolicy("CorsPolicy", opt =>
+    {
+        opt.AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
 var app = builder.Build();
 app.UseExceptionMiddleware();
 app.UseAutomaticMigration<AppDbContext>();
@@ -26,6 +36,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseStaticFiles();
 app.UseHttpsRedirection();
+app.UseCors("CorsPolicy");
 //app.UseAuthorization();
 app.MapControllers();
 app.Run();

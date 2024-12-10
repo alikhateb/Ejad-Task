@@ -1,0 +1,120 @@
+﻿@page "/applicants/{id:guid}"
+
+<style>
+    .card-info {
+        padding: 20px;
+    }
+
+    .info-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+
+    .label {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .value {
+        text-align: left;
+    }
+</style>
+
+<FluentStack Orientation="Orientation.Vertical" HorizontalAlignment="HorizontalAlignment.Center">
+    <FluentStack HorizontalAlignment="HorizontalAlignment.Center">
+        <div class="card" style="width: 18rem;">
+            @if (!string.IsNullOrEmpty(Applicant.PersonalImage))
+            {
+                <img src="@_imageUrl" class="card-img-top" alt="personal-image">
+            }
+            else
+            {
+                <img src="personal-image.png" class="card-img-top" alt="personal-image">
+            }
+
+            <div class="card-body card-info">
+                <div class="info-row">
+                    <span class="label">@nameof(Applicant.FullName):</span>
+                    <span class="value">@Applicant.FullName</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">@nameof(Applicant.Email):</span>
+                    <span class="value">@Applicant.Email</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">@nameof(Applicant.JobTitle):</span>
+                    <span class="value">@Applicant.JobTitle</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">@nameof(Applicant.ExpectedSalary):</span>
+                    <span class="value">@Applicant.ExpectedSalary</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">@nameof(Applicant.Mobile):</span>
+                    <span class="value">@Applicant.Mobile</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">@nameof(Applicant.LinkedInUrl):</span>
+                    <span class="value">
+                        <a href="@Applicant.LinkedInUrl" target="_blank">@nameof(Applicant.LinkedInUrl)</a>
+                    </span>
+                </div>
+                <div class="info-row">
+                    <span class="label">@nameof(Applicant.MaritalStatus):</span>
+                    <span class="value">@Applicant.MaritalStatus</span>
+                </div>
+                <div class="info-row">
+                    <span class="label">@nameof(Applicant.DateOfBirth):</span>
+                    <span class="value">@Applicant.DateOfBirth.ToString("dd-MM-yyyy")</span>
+                </div>
+            </div>
+        </div>
+    </FluentStack>
+
+    <FluentStack Orientation="Orientation.Horizontal" HorizontalAlignment="HorizontalAlignment.Center">
+        @foreach (var item in Applicant.WorkExperiences)
+        {
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                    Work Experience
+                </div>
+
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
+                        <div class="info-row">
+                            <span class="label">@nameof(item.CompanyName):</span>
+                            <span class="value">@item.CompanyName</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="info-row">
+                            <span class="label">@nameof(item.JobTitle):</span>
+                            <span class="value">@item.JobTitle</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="info-row">
+                            <span class="label">@nameof(item.Salary):</span>
+                            <span class="value">@item.Salary</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="info-row">
+                            <span class="label">@nameof(item.Start):</span>
+                            <span class="value">@item.Start.ToString("dd-MM-yyyy")</span>
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="info-row">
+                            <span class="label">@nameof(item.End):</span>
+                            <span class="value">@item.End.ToString("dd-MM-yyyy")</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        }
+    </FluentStack>
+</FluentStack>
+
+

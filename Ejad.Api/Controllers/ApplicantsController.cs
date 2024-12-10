@@ -1,7 +1,8 @@
 using Ejad.Core;
 using Ejad.Core.Application.Applicants.Create;
-using Ejad.Core.Application.Applicants.Get;
+using Ejad.Core.Application.Applicants.Details;
 using Ejad.Core.Application.Applicants.GetImage;
+using Ejad.Core.Application.Applicants.List;
 using Ejad.Domain.Ids;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -13,7 +14,6 @@ public class ApplicantsController(ISender mediator) : ControllerBase
 {
     private const string MimeType = "image/png";
     private const string ReturnedFileName = "image.png";
-    //private const string MimeType = "application/octet-stream";
 
     [HttpPost(ApiRouts.Applicants.Add)]
     public async Task<ActionResult<ApplicantId>> Add([FromForm] CreateApplicantCommand command,
@@ -23,10 +23,17 @@ public class ApplicantsController(ISender mediator) : ControllerBase
     }
 
     [HttpGet(ApiRouts.Applicants.Details)]
-    public async Task<ActionResult<GetApplicantQueryResult>> Add([FromRoute] ApplicantId id,
+    public async Task<ActionResult<GetApplicantDetailsQueryResult>> Details([FromRoute] ApplicantId id,
         CancellationToken cancellationToken = default)
     {
-        return Ok(await mediator.Send(new GetApplicantQuery(id), cancellationToken));
+        return Ok(await mediator.Send(new GetApplicantDetailsQuery(id), cancellationToken));
+    }
+
+    [HttpGet(ApiRouts.Applicants.List)]
+    public async Task<ActionResult<List<GetApplicantsListQueryResult>>> List(
+        CancellationToken cancellationToken = default)
+    {
+        return Ok(await mediator.Send(new GetApplicantsListQuery(), cancellationToken));
     }
 
     [HttpGet(ApiRouts.Applicants.Image)]
